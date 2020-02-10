@@ -1,14 +1,36 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color ="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+  </ion-buttons>  
     <ion-title>
-      Ionic Blank
+      LOGO
     </ion-title>
   </ion-toolbar>
+
 </ion-header>
 
+
+
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <ion-grid>
+
+        <input type="text" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search (click) = "ssetLocation()">
+      <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+        
+        <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+          (dragEnd)="markerDragEnd($event)"></agm-marker>
+          
+      </agm-map>
+      <ion-button expand="block" color = "danger" (click) = postadd(search.value) width = 100%>Post your ad</ion-button>
+      <!-- <h5>Address: {{address}}</h5>
+      <div>Latitude: {{latitude}}</div>
+      <div>Longitude: {{longitude}}</div> -->
+    
+    
+  
+  </ion-grid>
+  
+
 </ion-content>
+
